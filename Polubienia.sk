@@ -1,0 +1,15 @@
+variables:
+	{polubienia} = 0
+	{lubie.%player%} = false
+command /polubienia [<text>]:
+	trigger:
+		send title "&aPolubienia" with subtitle "&aNasz serwer lubi &e%{polubienia}% &aosob" for 5 seconds
+command /lubie [<text>]:
+	trigger:
+		if {lubie.%player%} is false:
+			add 1 to {polubienia}
+			give player 1 diamond
+			send title "&aPolubienia" with subtitle "&aDziekujemy za polubienie naszego serwera!" for 5 seconds
+			set {lubie.%player%} to true
+		else:
+			send title "&cPolubienia" with subtitle "&cNie mozesz polubic serwera 2 razy!"
