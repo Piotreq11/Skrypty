@@ -1,0 +1,22 @@
+variables:
+	{home.%player%} = false
+command /sethome [<text>]:
+	aliases: ustawdom
+	trigger:
+		set {home.%player%} to location of player
+		send "&aUstawiles dom, aby sie do niego przeteleportowac wpisz /home"
+command /home [<text>]:
+	aliases: dom
+	trigger:
+		if {home.%player%} is false:
+			send "&6Nie masz ustawionego domu, ustaw go za pomoca /sethome"
+		else:
+			send "&6Zostaniesz przeteleportowany za 5 sekund"
+			wait 5 seconds
+			teleport player to {home.%player%}
+			send "&aZostales przeteleportowany do domu"
+command /delhome [<text>]:
+	aliases: usundom
+	trigger:
+		set {home.%player%} to false
+		send "&cTwoj dom zostal usuniety!"
