@@ -1,0 +1,38 @@
+variables:
+	{chat} = true
+command /chat [<text>]:
+	trigger:
+		if arg 1 is "c" or "czysc" or "clear":
+			loop 200 times:
+				send "" to all players
+			send "&cChat zostal wyczyszczony!"
+		if arg 1 is "on" or "wlacz":
+			if {chat} is false:
+				set {chat} to true
+				send "&aChat zostal wlaczony!" to all players
+			else:
+				send "&6Chat jest juz wlaczony!"
+		if arg 1 is "off" or "wylacz":
+			if {chat} is true:
+				set {chat} to false
+				loop 200 times:
+					send "" to all players
+				send "&cChat zostal wylaczony!" to all players
+			else:
+				send "&6Chat jest juz wylaczony!"
+		if arg 1 is "t" or "toggle":
+			if {chat} is false:
+				set {chat} to true
+				send "&aChat zostal wlaczony!" to all players
+			else:
+				set {chat} to false
+				loop 200 times:
+					send "" to all players
+				send "&cChat zostal wylaczony!" to all players
+on chat:
+	if {chat} is false:
+		if player is op:
+			stop
+		else:
+			cancel event
+			send "&cChat jest wylaczony!"
