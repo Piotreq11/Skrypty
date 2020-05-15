@@ -1,0 +1,7 @@
+variables:
+	{stone.%player%} = 0
+	{obs.%player%} = 0
+on mine stone:
+	add 1 to {stone.%player%}
+on mine obsidian:
+	add 1 to {obs.%player%}
